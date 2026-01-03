@@ -1,6 +1,6 @@
 # Angular Project Starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli). Follow the guide below to set up your local development environment and run the application.
+This project was created with [Angular CLI](https://github.com/angular/angular-cli). Follow the guide below to set up your local development environment and run the application.
 
 ## 🛠 Prerequisites
 
