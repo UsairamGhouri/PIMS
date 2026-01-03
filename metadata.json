@@ -1,0 +1,5 @@
+{
+  "name": "PIMS",
+  "description": "A comprehensive Pharmacy Inventory Management System featuring role-based access for Admins, Pharmacists, and Customers. Includes inventory tracking, sales management, low-stock alerts, and reporting.",
+  "requestFramePermissions": []
+}
