@@ -1,44 +1,137 @@
-# PIMS Local Deployment
+🩺 PIMS: Pharmaceutical Inventory Management System
+===============================================
 
-This project was created with [Angular CLI](https://github.com/angular/angular-cli). Follow the guide below to set up your local development environment and run the application.
+**PIMS** is a comprehensive, role-based inventory and sales management platform designed to bridge the gap between warehouse logistics and front-end pharmacy operations. Built with a modern Angular architecture, it provides real-time financial tracking, secure user management, and a streamlined supply chain workflow.
 
-## 🛠 Prerequisites
 
-Before you begin, ensure you have the following installed:
 
-- **Node.js** (LTS version recommended)
-- **npm** (comes with Node.js)
-- **Angular CLI** (Install via `npm install -g @angular/cli`)
+🚀 Key Features
+---------------
 
-## 🚀 Getting Started
+### 🧳 Role-Based Access Control (RBAC)
 
-Follow these instructions to get the project up and running on your local machine.
+The system is tailored for four distinct user archetypes, each with a specialized dashboard:
 
-### 1. Open the Project
+-   **SuperAdmin:** Full system oversight, user management, and data portability (Import/Export).
 
-Open your preferred IDE (we recommend VS Code) and navigate to the project's root folder.
+-   **Pharmacist:** Manages local pharmacy stock, processes sales, and initiates restock requests.
 
-### 2. Install Dependencies
+-   **Warehouse Worker:** Oversees bulk inventory, approves new medicine entries, and fulfills pharmacy restock orders.
 
-Open the integrated terminal in your IDE and run the following command to install all necessary packages.
+-   **Customer:** Simple interface for browsing available medicine and viewing personal purchase history.
 
-> **Note:** We use the `--legacy-peer-deps` flag to ensure compatibility between various dependency versions.
+### 📦 Dual-Layer Inventory System
 
-```bash
-npm install --legacy-peer-deps
-```
+Unlike basic trackers, PIMS manages two distinct stock levels:
 
-### 3. Start the Development Server
+1.  **Pharmacy Stock:** Immediate "on-shelf" availability for customer sales.
 
-Once the installation is complete, start the local server by running:
+2.  **Warehouse Stock:** Bulk storage used to fulfill internal "Restock Requests."
 
-```bash
-ng serve
-```
+-   *Workflow:* When pharmacy stock is low, a request is sent to the Warehouse. Upon approval, stock is automatically deducted from the Warehouse and added to the Pharmacy.
 
-### 4. View the Application
+### 💰 Real-Time Financials
 
-After the build is successful, the terminal will provide a local URL (typically `http://localhost:3000/`).
+The `DataService` layer performs live calculations to provide a snapshot of business health:
 
-- Click the link in the terminal, or
-- Copy and paste it into your web browser to view the application.
+-   **Gross Sales:** Total revenue generated from all processed sales.
+
+-   **Restock Expenses:** Cumulative cost of goods (calculated at a 2.5% discount from retail price).
+
+-   **Net Profit:** Real-time liquidity calculation (Revenue - Expenses).
+
+### 🔐 Security & Validation
+
+-   **Robust Profiles:** Built-in validation for usernames (alphanumeric) and "Strong" password requirements (Length, Case, Digits, and Special Characters).
+
+-   **Persistence:** State is managed via Angular Signals and persisted through `localStorage`, ensuring data survives page refreshes without a complex backend setup.
+
+
+🛠 Tech Stack
+-------------
+
+-   **Framework:** [Angular 21](https://angular.io/) (utilizing Signals for reactive state)
+
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+
+-   **Build Tool:** [VS Code](https://code.visualstudio.com/)
+
+-   **Language:** TypeScript
+
+
+
+💻 Getting Started
+------------------
+
+### Prerequisites
+
+-   **Node.js** (LTS version)
+
+-   **Angular CLI** (`npm install -g @angular/cli`)
+
+### Installation
+
+1.  **Clone and Navigate:**
+
+    Bash
+
+    ```
+    cd PIMS
+
+    ```
+
+2.  Install Dependencies:
+
+    We use --legacy-peer-deps to ensure perfect compatibility between Angular 21 and the supporting ecosystem.
+
+    Bash
+
+    ```
+    npm install --legacy-peer-deps
+
+    ```
+
+3.  **Run Development Server:**
+
+    Bash
+
+    ```
+    ng serve
+
+    ```
+
+4.  Access the App:
+
+    Open http://localhost:3000/ in your browser.
+
+
+
+🔑 Default Credentials
+----------------------
+
+For testing and initial setup, the system initializes with the following users:
+
+| **Role** | **Username** | **Password** |
+| --- | --- | --- |
+| **Admin** | `SuperAdmin` | `Admin123!` |
+| **Pharmacist** | `usairam` | `User123!` |
+| **Warehouse** | `storekeeper` | `User123!` |
+| **Customer** | `awais` | `User123!` |
+
+
+
+📂 Project Structure
+--------------------
+
+-   `src/app.component.ts`: The main application shell and navigation logic.
+
+-   `src/services/data.service.ts`: The "brain" of the app, handling state, logic, and persistence.
+
+-   `src/components/`: Modularized dashboards for each user role.
+
+
+
+📝 Data Management
+------------------
+
+The Admin role includes a **Data Portability** feature. You can export the entire system state (Medicines, Users, Sales, and Requests) as a JSON file and restore it on another machine using the "Import" function.
