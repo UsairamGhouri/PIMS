@@ -77,7 +77,6 @@ The `DataService` layer performs live calculations to provide a snapshot of busi
 
     ```
     cd PIMS
-
     ```
 
 2.  Install Dependencies:
@@ -88,7 +87,6 @@ The `DataService` layer performs live calculations to provide a snapshot of busi
 
     ```
     npm install --legacy-peer-deps
-
     ```
 
 3.  **Run Development Server:**
@@ -97,7 +95,6 @@ The `DataService` layer performs live calculations to provide a snapshot of busi
 
     ```
     ng serve
-
     ```
 
 4.  Access the App:
