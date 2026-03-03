@@ -132,3 +132,8 @@ For testing and initial setup, the system initializes with the following users:
 ------------------
 
 The Admin role includes a **Data Portability** feature. You can export the entire system state (Medicines, Users, Sales, and Requests) as a JSON file and restore it on another machine using the "Import" function.
+
+License
+-------
+
+This project is licensed under the terms provided in the LICENSE file.
